@@ -11,25 +11,25 @@ const taskobjs = {
 
 const generateID = (tasks) => {
     const maxID = tasks.reduce((maxID,task)=> Math.max(maxID,task.id),-1);
-    return maxID;
+    return maxID+1;
 }
 
 //created a task reducer for updating state related to tasks
 const taskReducer = (state = taskobjs,action) => {
     switch(action.type){
-        case "tasks/taskAdded" : {
+        case "tasks/taskAdded" : 
             return {
                 ...state,
                 tasks : [
                     ...state.tasks,{
-                         id: generateID(state.todos),
+                         id: generateID(state.tasks),
                          text: action.payload.text,
                          completed: false
                     }
                 ]
             }
-        }
-        case "tasks/taskCompleted" : {
+        
+        case "tasks/taskCompleted" : 
             return {
                 ...state,
                 tasks : state.tasks.map((task)=>{
@@ -40,15 +40,15 @@ const taskReducer = (state = taskobjs,action) => {
                     }
                 })
             }
-        }
-        case "tasks/taskDeleted" : {
+        
+        case "tasks/taskDeleted" : 
             return {
                 ...state,
                 tasks: state.tasks.filter((task) => {
                     return task.id !== action.payload.id;
                 })
             }
-        }
+        
         default:
          return state;
     }
