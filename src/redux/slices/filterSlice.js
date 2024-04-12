@@ -6,6 +6,7 @@ const filter = {
 
 //created a filter reducer for updating state related to filters
 const filterReducer = (state = filter, action) => {
+    console.log("filter reducer...");
     switch(action.type){
         case "filters/changeValue" : {
             return {

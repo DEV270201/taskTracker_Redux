@@ -1,3 +1,4 @@
+//this state is used if I don't provide any kind of preloaded state
 const taskobjs = {
     tasks : [
         {
@@ -16,6 +17,7 @@ const generateID = (tasks) => {
 
 //created a task reducer for updating state related to tasks
 const taskReducer = (state = taskobjs,action) => {
+    console.log("task reducer...");
     switch(action.type){
         case "tasks/taskAdded" : 
             return {
