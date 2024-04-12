@@ -20,15 +20,14 @@ const taskReducer = (state = taskobjs,action) => {
     console.log("task reducer...");
     switch(action.type){
         case "tasks/taskAdded" : 
+        state.tasks.push({
+            id: generateID(state.tasks),
+            text: action.payload.text,
+            completed: false
+       })
             return {
                 ...state,
-                tasks : [
-                    ...state.tasks,{
-                         id: generateID(state.tasks),
-                         text: action.payload.text,
-                         completed: false
-                    }
-                ]
+                tasks : state.tasks
             }
         
         case "tasks/taskCompleted" : 

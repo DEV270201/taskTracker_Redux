@@ -26,7 +26,7 @@ const addStateLoggerEnhancer = (createStore) => {
        //function customizing getState method
        function customGetState(){
          let state = store.getState();
-         console.log("Current state : ",state);
+        //  console.log("Current state : ",state);
          return state;
        }
 
